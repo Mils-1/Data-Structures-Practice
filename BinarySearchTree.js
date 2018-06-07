@@ -5,26 +5,40 @@ class BinarySearchTree {
     this.right = null;
     this.magnitude = 1;
   }
-  insert(value) {
+
+  insert (value) {
     const direction = this.value > value ? 'left' : 'right';
     if (this[direction]) this[direction].insert(value);
     else this[direction] = new BinarySearchTree(value);
     this.magnitude++;
   }
-  contains(value) {
+
+  contains (value) {
     if (this.value === value) return true;
     const direction = this.value > value ? 'left' : 'right';
     if (this[direction]) return this[direction].contains(value);
     return false;
   }
-  depthFirstForEach(func, opt = 'in-order') {
+
+  depthFirstForEach (func, opt = 'in-order') {
     if (opt === 'pre-order') func(this.value);
     if (this.left) this.left.depthFirstForEach(func, opt);
     if (opt === 'in-order') func(this.value);
     if (this.right) this.right.depthFirstForEach(func, opt);
     if (opt === 'post-order') func(this.value);
   }
-  size() {
+
+  breadthFirstForEach (func) {
+    const queue = [this];
+    while (queue.length) {
+      const current = queue.shift();
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+      func(current.value);
+    }
+  }
+
+  size () {
     return this.magnitude;
   }
 }
