@@ -1,3 +1,5 @@
+/* eslint-disable no-lonely-if */
+
 class BinarySearchTree {
   constructor(value) {
     this.value = value;
@@ -6,6 +8,7 @@ class BinarySearchTree {
     this.magnitude = 1;
   }
 
+  // Recursive Insert
   insert (value) {
     const direction = this.value > value ? 'left' : 'right';
     if (this[direction]) this[direction].insert(value);
@@ -13,12 +16,49 @@ class BinarySearchTree {
     this.magnitude++;
   }
 
+  /* Iterative Insert
+  insert (value) {
+    let currentNode = this;
+    while (true) {
+      if (value < currentNode.value) {
+        if (!currentNode.left) {
+          currentNode.left = new BinarySearchTree(value);
+          break;
+        } else {
+          currentNode = currentNode.left;
+        }
+      } else {
+        if (!currentNode.right) {
+          currentNode.right = new BinarySearchTree(value);
+          break;
+        } else {
+          currentNode = currentNode.right;
+        }
+      }
+    }
+    return this;
+  }
+  */
+
+  // Recursive Contains
   contains (value) {
     if (this.value === value) return true;
     const direction = this.value > value ? 'left' : 'right';
     if (this[direction]) return this[direction].contains(value);
     return false;
   }
+
+  /* Iterative Contains
+  contains (value) {
+    let currentNode = this;
+    while (currentNode) {
+      if (value === currentNode.value) return true;
+      else if (value < currentNode.value) currentNode = currentNode.left;
+      else if (value > currentNode.value) currentNode = currentNode.right;
+    }
+    return false;
+  }
+  */
 
   depthFirstForEach (func, opt = 'in-order') {
     if (opt === 'pre-order') func(this.value);
