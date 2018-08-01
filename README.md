@@ -1,3 +1,4 @@
 # Data-Structures-Practice
 
-- This repo exists for interview prep and practice
+- This repo exists simply for interview prep and practice
+
