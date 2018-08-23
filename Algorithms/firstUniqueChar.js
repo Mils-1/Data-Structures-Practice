@@ -1,5 +1,4 @@
 /*
-
 Find the first unique character in a given string
 input: foobar
 output: f
@@ -9,7 +8,6 @@ output: d
 
 input: aabbcc
 output: 'No Unique Character Found'
-
 */
 
 const firstUniqueChar = (str) => {
@@ -18,7 +16,6 @@ const firstUniqueChar = (str) => {
     const char = str[i];
     obj[char] ? obj[char]++ : obj[char] = 1
   }
-  console.log(obj);
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
     if (obj[char] === 1) return char
@@ -26,6 +23,4 @@ const firstUniqueChar = (str) => {
   return false
 }
 
-firstUniqueChar('foobar');    //f
-firstUniqueChar('aabbccdef'); //d
-firstUniqueChar('ffoo');    //false
+module.exports = firstUniqueChar;
