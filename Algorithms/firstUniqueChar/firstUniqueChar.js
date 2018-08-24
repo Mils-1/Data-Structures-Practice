@@ -14,13 +14,13 @@ const firstUniqueChar = (str) => {
   const obj = {}
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
-    obj[char] ? obj[char]++ : obj[char] = 1
+    obj[char] ? obj[char]++ : obj[char] = 1;
   }
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
-    if (obj[char] === 1) return char
+    if (obj[char] === 1) return char;
   }
-  return false
+  return false;
 }
 
 module.exports = firstUniqueChar;
