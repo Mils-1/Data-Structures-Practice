@@ -30,16 +30,3 @@ const oneAway = (str1, str2) => {
 
 module.exports = oneAway;
 
-/*
-{
-  p: 1
-  a: 1
-  l: 1
-  e: 1
-}
-{
-  p: 1
-  l: 1
-  e: 1
-}
-*/
