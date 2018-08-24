@@ -16,4 +16,22 @@ const checkPerm = (str1, str2) => {
   return str1 === str2;
 };
 
+const createHTOfStr = (str) => {
+  return str.split('')
+    .reduce((acc, elem) => {
+      acc[elem] ? acc[elem]++ : acc[elem] = 1;
+      return acc;
+    }, {})
+}
+
+const checkPermV2 = (str1, str2) => {
+  const obj1 = createHTOfStr(str1);
+  const obj2 = createHTOfStr(str2);
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+  for (let key in obj1) {
+    if (obj1[key] !== obj2[key]) return false
+  }
+  return true;
+}
+
 module.exports = checkPerm;
